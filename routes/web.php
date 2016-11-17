@@ -35,7 +35,4 @@ Route::get('/users/{id}/edit', 'UsersController@editUser');
 Route::put('/users/{id}', 'UsersController@updateUser');
 
 //delete route
-// Route::destroy('/users/{id}', function() {
-//     //delete the record from the db
-//    header('Location: /users');
-// });
+Route::delete('/users/{id}', 'UsersController@deleteUser');

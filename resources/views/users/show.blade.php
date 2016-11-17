@@ -7,6 +7,12 @@
             <li>Username: {{ $user[0]->username }}</li>
         </ul><br />
         <a href="/users/{{ $user[0]->id }}/edit">Edit User</a>
-        <input type="button" name="delete" value="Delete User" id="delete"><br />
+
+        <form method="post" action="/users/{{ $user[0]->id }}">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            {{ method_field('DELETE') }}
+            <input type="submit" value="Delete {{$user[0]->firstname}}">
+        </form>
+
         <a href="/">Home</a>
 @include('partials.foot')
