@@ -1,0 +1,1 @@
+{"version":3,"sources":["_reset.sass","users.sass"],"names":[],"mappings":"AAAA;EACI,uBAAuB;EACvB,WAAW;EACX,UAAU,EAAG;;ACDjB;EACI,mBAAmB;EACnB,gBAAgB;EAChB,WAAW,EAAG","file":"users.css","sourcesContent":["* {\n    box-sizing: border-box;\n    padding: 0;\n    margin: 0; }\n","@import \"reset\";\n\nbody {\n    text-align: center;\n    font-size: 16px;\n    color: red; }\n"]}
