@@ -26,8 +26,16 @@
             return view('users.edit', ['user' => $user]);
         }
 
-        public function updateUser($id) {
-            //@ToDo record updated user in db
+        public function updateUser(Request $request, $id) {
+            //$user = DB::table('users')->where('id', $id)->select();
+
+            $new_firstname = $request->input('fname');
+            $new_lastname = $request->input('lname');
+            $new_username = $request->input('uname');
+
+            DB::table('users')->where('id', $id)->update(['firstname'=>$new_firstname,
+                                                          'lastname'=>$new_lastname,
+                                                          'username'=>$new_username]);
 
             return redirect('/users');
         }
