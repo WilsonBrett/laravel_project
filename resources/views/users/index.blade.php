@@ -5,6 +5,8 @@
                 <li>Username: <a href="/users/{{$user->id}}">{{ $user->username }}</a></li>
             @endforeach
         </ul><br />
-        <a href="/users/new">Add User</a><br />
-        <a href="/">Home</a>
+        <div>
+            <a href="/users/new" class="btn btn-primary">Add User</a>
+            <a href="/" class="btn btn-default">Home</a>
+        </div>
 @include('partials.foot')

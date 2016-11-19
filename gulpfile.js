@@ -13,8 +13,13 @@ require('laravel-elixir-vue-2');
  |
  */
 
-elixir((mix) => {
+elixir(function(mix) {
+    var bootstrapPath = 'node_modules/bootstrap-sass/assets';
+
+    //app.scss imports bootstrap stylesheets but not bootstrap fonts or javascripts
     mix.sass('app.scss')
-       .sass('users.sass')
+       .copy(bootstrapPath + '/fonts', 'public/fonts')
+       .copy(bootstrapPath + '/javascripts/bootstrap.min.js', 'public/js')
+       .copy('vendor/components/jquery/jquery.min.js', 'public/js')
        .webpack('app.js');
 });

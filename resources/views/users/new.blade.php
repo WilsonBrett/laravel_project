@@ -5,8 +5,9 @@
             Firstname: <input name="fname" type="text"><br />
             Lastname: <input name="lname" type="text"><br />
             Username: <input name="uname" type="text"><br /><br />
-            <input name="submit" type="submit" value="Submit">
-            <a href="/users">Cancel</a>
+            <input name="submit" type="submit" value="Submit" class="btn btn-primary">
+            <a href="/users" class="btn btn-default">Cancel</a>
+            <a href="/" class="btn btn-default">Home</a>
         </form><br />
-        <a href="/">Home</a>
+
 @include('partials.foot')
