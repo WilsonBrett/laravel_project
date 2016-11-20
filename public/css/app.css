@@ -5773,7 +5773,9 @@ button.close {
 
 body {
   text-align: center;
-  font-size: 16px;
+  font-size: 16px; }
+
+h1 {
   color: red; }
 
 input[type="text"] {
@@ -5782,6 +5784,20 @@ input[type="text"] {
 
 a, a:hover, a:visited, a:active {
   text-decoration: none; }
+
+ol {
+  margin: 0 auto;
+  text-align: left;
+  list-style-position: inside; }
+
+.panel {
+  width: 50%;
+  max-width: 800px;
+  margin: 0 auto; }
+
+.list-group-item {
+  display: list-item;
+  padding-left: 45%; }
 
 form#deleteForm {
   display: inline; }
