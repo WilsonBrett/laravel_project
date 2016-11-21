@@ -5772,15 +5772,11 @@ button.close {
   margin: 0; }
 
 body {
-  text-align: center;
   font-size: 16px; }
 
 h1 {
-  color: red; }
-
-input[type="text"] {
-  padding: 1rem;
-  border-radius: 5px; }
+  color: red;
+  text-align: center; }
 
 a, a:hover, a:visited, a:active {
   text-decoration: none; }
