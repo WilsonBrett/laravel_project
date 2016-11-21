@@ -9,33 +9,30 @@
 
     class UsersController extends Controller {
         public function getAll() {
-            $users = DB::select('select * from users');
-
+            $users = User::all();
             return view('users.index', ['users' => $users]);
         }
 
         public function showUser($id) {
-            $user = DB::select('select * from users where id = ?', [$id]);
-
+            $user = User::where('id', $id)->get();
             return view('users.show', ['user' => $user]);
         }
 
         public function editUser($id) {
-            $user = DB::select('select * from users where id = ?', [$id]);
-
+            $user = User::where('id', $id)->get();
             return view('users.edit', ['user' => $user]);
         }
 
         public function updateUser(Request $request, $id) {
-            //$user = DB::table('users')->where('id', $id)->select();
 
             $new_firstname = $request->input('fname');
             $new_lastname = $request->input('lname');
             $new_username = $request->input('uname');
 
-            DB::table('users')->where('id', $id)->update(['firstname'=>$new_firstname,
-                                                          'lastname'=>$new_lastname,
-                                                          'username'=>$new_username]);
+            User::where('id', $id)
+                    ->update(['firstname'=>$new_firstname,
+                              'lastname'=>$new_lastname,
+                              'username'=>$new_username]);
 
             return redirect('/users');
         }
@@ -50,13 +47,16 @@
             $lastname = $request->input('lname');
             $username = $request->input('uname');
 
-            DB::table('users')->insert(['firstname' => $firstname, 'lastname' => $lastname, 'username' => $username]);
+            User::insert(['firstname' => $firstname,
+                          'lastname' => $lastname,
+                          'username' => $username]);
 
             return redirect('/users');
         }
 
         public function deleteUser($id) {
-            DB::table('users')->where('id', '=', $id)->delete();
+            User::where('id', '=', $id)->delete();
+
             return redirect('/users');
         }
 

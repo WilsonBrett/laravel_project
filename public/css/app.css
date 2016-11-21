@@ -5790,6 +5790,10 @@ ol {
   text-align: left;
   list-style-position: inside; }
 
+ul {
+  list-style-type: none;
+  text-align: left; }
+
 .panel {
   width: 50%;
   max-width: 800px;
