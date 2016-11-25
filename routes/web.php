@@ -11,9 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//*****************************LOGINController*****************************
+
+//loads the home page
+Route::get('/', function() {
+    return view('index');
 });
+
+Route::post('/', 'LoginController@login');
+
+//*****************************USERSController*****************************
 
 //index route
 Route::get('/users', 'UsersController@getAll');

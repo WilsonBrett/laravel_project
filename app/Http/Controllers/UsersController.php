@@ -1,7 +1,6 @@
 <?php
     //backspaces used in the top 3 lines.  not sure why.
     namespace App\Http\Controllers;
-    use Illuminate\Support\Facades\DB;
     use App\User;
     use App\Http\Controllers\Controller;
     use Illuminate\Http\Request;
