@@ -7,16 +7,22 @@
             <div class="panel-body">
                 <div class="list-group">
                     <ul>
-                        <li class="list-group-item">ID: {{ $user[0]->id }}</li>
-                        <li class="list-group-item">First Name: {{ $user[0]->firstname }}</li>
-                        <li class="list-group-item">Last Name: {{ $user[0]->lastname }}</li>
-                        <li class="list-group-item">Username: {{ $user[0]->username }}</li>
+                        <li class="list-group-item">ID: {{ $user -> id }}</li>
+                        <li class="list-group-item">First Name: {{ $user -> firstname }}</li>
+                        <li class="list-group-item">Last Name: {{ $user -> lastname }}</li>
+                        <li class="list-group-item">Username: {{ $user -> username }}</li>
+                        <li class="list-group-item">Password: {{ $user -> password }}</li>
+                        @if ($user -> admin)
+                            <li class="list-group-item">Admin: True</li>
+                        @else
+                            <li class="list-group-item">Admin: False</li>
+                        @endif
                     </ul>
                 </div>
             </div>
             <div class="panel-footer">
-                <a href="/users/{{ $user[0]->id }}/edit" class="btn btn-primary">Edit User</a>
-                <form method="post" action="/users/{{ $user[0]->id }}" id="deleteForm">
+                <a href="/users/{{ $user -> id }}/edit" class="btn btn-primary">Edit User</a>
+                <form method="post" action="/users/{{ $user -> id }}" id="deleteForm">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     {{ method_field('DELETE') }}
                     <input type="submit" value="Delete User" class="btn btn-danger">

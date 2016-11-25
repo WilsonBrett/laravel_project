@@ -15,12 +15,12 @@
 
         public function showUser($id) {
             $user = User::where('id', $id)->get();
-            return view('users.show', ['user' => $user]);
+            return view('users.show', ['user' => $user[0]]);
         }
 
         public function editUser($id) {
             $user = User::where('id', $id)->get();
-            return view('users.edit', ['user' => $user]);
+            return view('users.edit', ['user' => $user[0]]);
         }
 
         public function updateUser(Request $request, $id) {
@@ -28,11 +28,15 @@
             $new_firstname = $request->input('fname');
             $new_lastname = $request->input('lname');
             $new_username = $request->input('uname');
+            $password = $request->input('pword');
+            $admin = $request->input('admin');
 
             User::where('id', $id)
                     ->update(['firstname'=>$new_firstname,
                               'lastname'=>$new_lastname,
-                              'username'=>$new_username]);
+                              'username'=>$new_username,
+                              'password' => $password,
+                              'admin' => $admin]);
 
             return redirect('/users');
         }
@@ -42,14 +46,18 @@
         }
 
         public function addUser(Request $request) {
-            //@ToDo post data to db
+
             $firstname = $request->input('fname');
             $lastname = $request->input('lname');
             $username = $request->input('uname');
+            $password = $request->input('pword');
+            $admin = $request->input('admin');
 
             User::insert(['firstname' => $firstname,
                           'lastname' => $lastname,
-                          'username' => $username]);
+                          'username' => $username,
+                          'password' => $password,
+                          'admin' => $admin]);
 
             return redirect('/users');
         }

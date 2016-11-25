@@ -16,6 +16,14 @@
                         <label for="user_name">Username</label>
                         <input type="text" name="uname" class="form-control" id="user_name" placeholder="Username">
                     </div>
+                     <div class="form-group">
+                        <label for="admin">Password</label>
+                        <input type="password" name="pword" class="form-control" id="password" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="admin">Admin</label>
+                        <input type="checkbox" name="admin" class="form-control" id="admin" value="1">
+                    </div>
                 </div>
                 <div class="panel-footer">
                     <div class="form-group">
