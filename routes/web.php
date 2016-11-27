@@ -14,9 +14,7 @@
 //*****************************LOGINController*****************************
 
 //loads the home page
-Route::get('/', function() {
-    return view('index');
-});
+Route::get('/', 'LoginController@logout');
 
 Route::post('/', 'LoginController@login');
 

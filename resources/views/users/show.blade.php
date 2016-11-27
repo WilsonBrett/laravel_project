@@ -27,7 +27,7 @@
                     {{ method_field('DELETE') }}
                     <input type="submit" value="Delete User" class="btn btn-danger">
                 </form>
-                <a href="/users" class="btn btn-default">Index</a>
+                <a href="/users" class="btn btn-default">Cancel</a>
             </div>
         </div>
 @include('partials.foot')

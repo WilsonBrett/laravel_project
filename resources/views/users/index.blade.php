@@ -17,7 +17,7 @@
                 </div>
                 <div class="panel-footer">
                     <a href="/users/new" class="btn btn-primary">Add User</a>
-                    <a href="/" class="btn btn-default">Home</a>
+                    <a href="/" class="btn btn-default">Logout</a>
                 </div>
             </div>
         <br />

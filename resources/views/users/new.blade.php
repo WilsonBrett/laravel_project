@@ -29,7 +29,7 @@
                     <div class="form-group">
                         <input type="submit" name="submit" value="Submit" class="btn btn-primary">
                         <a href="/users" class="btn btn-default">Cancel</a>
-                        <a href="/" class="btn btn-default">Home</a>
+                        <a href="/" class="btn btn-default">Logout</a>
                     <div>
                 </div>
             </div>
