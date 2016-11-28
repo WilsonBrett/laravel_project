@@ -3,8 +3,9 @@
     <h1>Forecaster</h1>
     <form class="col-md-4 col-md-offset-4" method="post" action="/">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <h3>Login</h3>
         <div class="form-group">
-            <label for="login_uname">Login</label>
+            <label for="login_uname">Username</label>
             <input type="text" name="login_uname" id="login_uname" class="form-control" placeholder="Username">
         </div>
         <div class="form-group">

@@ -32,7 +32,7 @@
                 </div>
                 <div class="panel-footer">
                     <input name="submit" type="submit" class="btn btn-primary" value="Submit">
-                    <a href="/users" class="btn btn-default">Cancel</a>
+                    <a href="/users/{{$user->id}}" class="btn btn-default">Cancel</a>
                 </div>
             </div>
         </form>
