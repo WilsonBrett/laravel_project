@@ -4,6 +4,7 @@
     use App\User;
     use App\Http\Controllers\Controller;
     use App\Classes\My_Auth_Check;
+    use Illuminate\Support\Facades\Cache;
     use Illuminate\Http\Request;
     use Illuminate\Http\RedirectResponse;
 

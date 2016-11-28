@@ -5,6 +5,7 @@
     use App\Http\Controllers\Controller;
     use Illuminate\Http\Request;
     use Illuminate\Http\RedirectResponse;
+    use Illuminate\Support\Facades\Cache;
 
     class LoginController extends Controller {
 
@@ -25,7 +26,9 @@
                         //create the session id
                         $request->session()->put('username', $user[0]->username);
 
-                        //@ToDo: add username to cache for the auth check
+                        //add username to cache for the auth check - lasts forever
+                        Cache::forever('username', $user[0]->username);
+
                         return redirect('/users');
                     } else {
                         $error = "Username and password are incorrect.";
@@ -45,10 +48,14 @@
         }
 
         public function logout(Request $request) {
-            //Deletes the csrf token on the login form for some reason
-            //$request->session()->flush();
-            //@ToDo: flush the cache on logout
-            $request->session()->forget('username');
+            if(Cache::has('username')) {
+                Cache::forget('username');
+            }
+
+            if($request->session()->has('username')) {
+                $request->session()->forget('username');
+            }
+
             return view('index');
         }
 
