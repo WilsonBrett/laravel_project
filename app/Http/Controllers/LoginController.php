@@ -17,15 +17,15 @@
                 //@TODO:  Determine db response when no username found
                 //Currently $user is still truthy upon failed username query
                 $user = User::where('username', $username)->get();
-                //var_dump($user);
 
-                if($user) {
+                if($user->count() > 0) {
                     if(($user[0]->password) === $password) {
                         //user authenticated
 
                         //create the session id
                         $request->session()->put('username', $user[0]->username);
 
+                        //@ToDo: add username to cache for the auth check
                         return redirect('/users');
                     } else {
                         $error = "Username and password are incorrect.";
@@ -47,6 +47,7 @@
         public function logout(Request $request) {
             //Deletes the csrf token on the login form for some reason
             //$request->session()->flush();
+            //@ToDo: flush the cache on logout
             $request->session()->forget('username');
             return view('index');
         }

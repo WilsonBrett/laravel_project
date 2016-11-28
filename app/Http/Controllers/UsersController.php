@@ -66,7 +66,7 @@
         }
 
         public function addUser(Request $request, My_Auth_Check $my_auth_check) {
-
+            //@Todo: Need to make sure another user doesn't already have this username
             if($my_auth_check->check_session($request)) {
                 $firstname = $request->input('fname');
                 $lastname = $request->input('lname');
