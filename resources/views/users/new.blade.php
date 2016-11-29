@@ -15,6 +15,9 @@
                     <div class="form-group">
                         <label for="user_name">Username</label>
                         <input type="text" name="uname" class="form-control" id="user_name" placeholder="Username">
+                        @if(session('error'))
+                            <div class="alert alert-danger">{{ session('error') }}</div>
+                        @endif
                     </div>
                      <div class="form-group">
                         <label for="admin">Password</label>

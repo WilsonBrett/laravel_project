@@ -69,9 +69,19 @@
         public function addUser(Request $request, My_Auth_Check $my_auth_check) {
             //@Todo: Need to make sure another user doesn't already have this username
             if($my_auth_check->check_session($request)) {
+
+                $username = $request->input('uname');
+                $user = User::where('username', '=', $username);
+
+                if($user->count()) {
+                    //user exists in db - redirect back to form.
+                    return redirect('/users/new')
+                                ->with('error','Username is Taken!  Please try another.');
+                }
+
                 $firstname = $request->input('fname');
                 $lastname = $request->input('lname');
-                $username = $request->input('uname');
+                //$username = $request->input('uname');
                 $password = $request->input('pword');
                 $admin = $request->input('admin');
 
