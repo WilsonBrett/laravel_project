@@ -32,18 +32,18 @@
                         return redirect('/users');
                     } else {
                         $error = "Username and password are incorrect.";
-                        return view('index', ['error' => $error]);
+                        return redirect('/')->with('error', $error);
                     }
                 } else {
                     $error = "Username and password are incorrect.";
-                    return view('index', ['error' => $error]);
+                    return redirect('/')->with('error', $error);
                 }
             } else {
                 $error = "Username and password are incorrect.";
 
                 //should these be redirects with values instead?
                 //How do I handle the error variable in the web.php file?
-                return view('index', ['error' => $error]);
+                return redirect('/')->with('error', $error);
             }
         }
 

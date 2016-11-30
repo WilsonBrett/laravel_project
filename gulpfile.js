@@ -21,5 +21,7 @@ elixir(function(mix) {
        .copy(bootstrapPath + '/fonts', 'public/fonts')
        .copy(bootstrapPath + '/javascripts/bootstrap.min.js', 'public/js')
        .copy('vendor/components/jquery/jquery.min.js', 'public/js')
+       .copy('vendor/components/jqueryui/jquery-ui.min.js', 'public/js')
+       .copy('vendor/components/jqueryui/themes/base', 'public/css/base-theme')
        .webpack('app.js');
 });

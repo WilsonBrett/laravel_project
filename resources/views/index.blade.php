@@ -12,9 +12,9 @@
         <label for="login_uname">Password</label>
         <input type="password" name="login_pword" id="login_pword" class="form-control" placeholder="Password">
     </div>
-    <input type="submit" value="login" class="btn btn-primary"><br />
-    @if (isset($error))
-        <p>{{$error}}</p>
+    <input type="submit" value="login" class="btn btn-primary"><br /><br />
+    @if(session('error'))
+        <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
 </form>
 @include('partials.foot')

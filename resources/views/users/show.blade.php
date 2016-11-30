@@ -25,9 +25,12 @@
                 <form method="post" action="/users/{{ $user -> id }}" id="deleteForm">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     {{ method_field('DELETE') }}
-                    <input type="submit" value="Delete User" class="btn btn-danger">
+                    <input type="submit" value="Delete User" class="btn btn-danger" id="deleteBtn">
                 </form>
                 <a href="/users" class="btn btn-default">Cancel</a>
             </div>
+        </div>
+        <div id="delete_confirm">
+            <p>Are you sure you want to delete {{ $user -> username }} ?</p>
         </div>
 @include('partials.foot')
