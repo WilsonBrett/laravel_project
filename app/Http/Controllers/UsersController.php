@@ -11,16 +11,16 @@
 
     class UsersController extends Controller {
         public $repository;
+        private $auth_check;
 
-        public function __construct(UsersRepository $repository) {
+        public function __construct(UsersRepository $repository, My_Auth_Check $my_auth_check) {
             $this->repository = $repository;
+            $this->auth_check = $my_auth_check;
         }
 
-        public function getAll(Request $request, My_Auth_Check $my_auth_check) {
-            if($my_auth_check->check_session($request)) {
+        public function getAll(Request $request) {
+            if($this->authorized($request)) {
                 $users = $this->repository->get_users();
-                //$users = User::all();
-                //dd($users);
                 return view('users.index', ['users' => $users]);
 
             } else {
@@ -28,94 +28,71 @@
             }
         }
 
-        public function showUser(Request $request, My_Auth_Check $my_auth_check, $id) {
-            if($my_auth_check->check_session($request)) {
+        public function showUser(Request $request, $id) {
+            if($this->authorized($request)) {
                 //@TODO:  need to add try and catch for database queries
-                $user = User::where('id', $id)->get();
+                $user = $this->repository->get_user_by_id($id);
                 return view('users.show', ['user' => $user[0]]);
             } else {
                 return redirect('/');
             }
         }
 
-        public function editUser(Request $request, My_Auth_Check $my_auth_check, $id) {
-            if($my_auth_check->check_session($request)) {
-                $user = User::where('id', $id)->get();
+        public function editUser(Request $request, $id) {
+            if($this->authorized($request)) {
+                $user = $this->repository->get_user_by_id($id);
                 return view('users.edit', ['user' => $user[0]]);
             } else {
                 return redirect('/');
             }
         }
 
-        public function updateUser(Request $request, My_Auth_Check $my_auth_check, $id) {
-            if($my_auth_check->check_session($request)) {
-                $new_firstname = $request->input('fname');
-                $new_lastname = $request->input('lname');
-                $new_username = $request->input('uname');
-                $password = $request->input('pword');
-                $admin = $request->input('admin');
-
-                User::where('id', $id)
-                        ->update(['firstname'=>$new_firstname,
-                                  'lastname'=>$new_lastname,
-                                  'username'=>$new_username,
-                                  'password' => $password,
-                                  'admin' => $admin]);
-
+        public function updateUser(Request $request, $id) {
+            if($this->authorized($request)) {
+                $this->repository->update_user($request, $id);
                 return redirect('/users');
             } else {
                 return redirect('/');
             }
         }
 
-        public function newUserForm(Request $request, My_Auth_Check $my_auth_check) {
-            if($my_auth_check->check_session($request)) {
+        public function newUserForm(Request $request) {
+            if($this->authorized($request)) {
                 return view('users.new');
             } else {
                 return redirect('/');
             }
         }
 
-        public function addUser(Request $request, My_Auth_Check $my_auth_check) {
-            //@Todo: Need to make sure another user doesn't already have this username
-            if($my_auth_check->check_session($request)) {
+        public function addUser(Request $request) {
+            if($this->authorized($request)) {
+                $success = $this->repository->add_user($request);
 
-                $username = $request->input('uname');
-                $user = User::where('username', '=', $username);
-
-                if($user->count()) {
-                    //user exists in db - redirect back to form.
+                if($success) {
+                    return redirect('/users');
+                } else {
                     return redirect('/users/new')
-                                ->with('error','Username is Taken!  Please try another.');
+                                ->with('error', 'Error:  Username is in use.  Please try another.');
                 }
 
-                $firstname = $request->input('fname');
-                $lastname = $request->input('lname');
-                //$username = $request->input('uname');
-                $password = $request->input('pword');
-                $admin = $request->input('admin');
 
-                User::insert(['firstname' => $firstname,
-                              'lastname' => $lastname,
-                              'username' => $username,
-                              'password' => $password,
-                              'admin' => $admin]);
+            } else {
+                return redirect('/');
+            }
+        }
 
+        public function deleteUser(Request $request, $id) {
+            if($this->authorized($request)) {
+                $this->repository->delete_user($id);
                 return redirect('/users');
             } else {
                 return redirect('/');
             }
         }
 
-        public function deleteUser(Request $request, My_Auth_Check $my_auth_check, $id) {
-            if($my_auth_check->check_session($request)) {
-                User::where('id', '=', $id)->delete();
-                return redirect('/users');
-            } else {
-                return redirect('/');
-            }
+        private function authorized($req) {
+            return $this->auth_check->check_session($req);
         }
-
     }
 
 
