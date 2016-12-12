@@ -4,16 +4,25 @@
     use App\User;
     use App\Http\Controllers\Controller;
     use App\Classes\My_Auth_Check;
+    use App\Repositories\UsersRepository;
     use Illuminate\Support\Facades\Cache;
     use Illuminate\Http\Request;
     use Illuminate\Http\RedirectResponse;
 
     class UsersController extends Controller {
+        public $repository;
+
+        public function __construct(UsersRepository $repository) {
+            $this->repository = $repository;
+        }
 
         public function getAll(Request $request, My_Auth_Check $my_auth_check) {
             if($my_auth_check->check_session($request)) {
-                $users = User::all();
+                $users = $this->repository->get_users();
+                //$users = User::all();
+                //dd($users);
                 return view('users.index', ['users' => $users]);
+
             } else {
                 return redirect('/');
             }
@@ -21,6 +30,7 @@
 
         public function showUser(Request $request, My_Auth_Check $my_auth_check, $id) {
             if($my_auth_check->check_session($request)) {
+                //@TODO:  need to add try and catch for database queries
                 $user = User::where('id', $id)->get();
                 return view('users.show', ['user' => $user[0]]);
             } else {

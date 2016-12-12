@@ -30,7 +30,7 @@
                 <a href="/users" class="btn btn-default">Cancel</a>
             </div>
         </div>
-        <div id="delete_confirm">
+        <div id="delete_confirm" style="display:none;">
             <p>Are you sure you want to delete {{ $user -> username }} ?</p>
         </div>
 @include('partials.foot')
