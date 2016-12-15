@@ -4,7 +4,8 @@
     use App\User;
     use App\Http\Controllers\Controller;
     use App\Classes\My_Auth_Check;
-    use App\Repositories\UsersRepository;
+    //use App\Repositories\UsersRepository;
+    use App\Interfaces\UsersInterface;
     use Illuminate\Support\Facades\Cache;
     use Illuminate\Http\Request;
     use Illuminate\Http\RedirectResponse;
@@ -13,7 +14,7 @@
         public $repository;
         private $auth_check;
 
-        public function __construct(UsersRepository $repository, My_Auth_Check $my_auth_check) {
+        public function __construct(UsersInterface $repository, My_Auth_Check $my_auth_check) {
             $this->repository = $repository;
             $this->auth_check = $my_auth_check;
         }
@@ -74,7 +75,6 @@
                     return redirect('/users/new')
                                 ->with('error', 'Error:  Username is in use.  Please try another.');
                 }
-
 
             } else {
                 return redirect('/');
