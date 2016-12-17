@@ -4,7 +4,6 @@
     use App\User;
     use App\Http\Controllers\Controller;
     use App\Classes\My_Auth_Check;
-    //use App\Repositories\UsersRepository;
     use App\Interfaces\UsersInterface;
     use Illuminate\Support\Facades\Cache;
     use Illuminate\Http\Request;
@@ -90,6 +89,7 @@
             }
         }
 
+        //need to refactor
         private function authorized($req) {
             return $this->auth_check->check_session($req);
         }

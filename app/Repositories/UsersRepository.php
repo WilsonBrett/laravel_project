@@ -38,7 +38,7 @@
         }
 
         public function get_user_by_username($u) {
-            return User::where('username', '=', $u);
+            return User::where('username', $u)->get();
         }
 
         public function get_user_by_id($id) {

@@ -18,6 +18,8 @@ Route::get('/', 'LoginController@logout');
 
 Route::post('/', 'LoginController@login');
 
+Route::get('/home', 'LoginController@show_home');
+
 //*****************************USERSController*****************************
 
 //index route
