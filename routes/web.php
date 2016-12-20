@@ -13,11 +13,11 @@
 //
 //*****************************LOGINController*****************************
 
-//loads the home page
 Route::get('/', 'LoginController@logout');
 
 Route::post('/', 'LoginController@login');
 
+//loads the landing page
 Route::get('/home', 'LoginController@show_home');
 
 //*****************************USERSController*****************************

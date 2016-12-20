@@ -12,6 +12,7 @@
     class LoginController extends Controller {
         private $repository;
         private $auth_check;
+        private $login_error = "Username and password are incorrect.";
 
         public function __construct(UsersInterface $repository, My_Auth_Check $auth_check) {
             $this->repository = $repository;
@@ -29,29 +30,17 @@
                 $user = $this->repository->get_user_by_username($username);
                 if($user->count() > 0) {
                     if(($user[0]->password) === $password) {
-                        //user authenticated
-
-                        //create the session id
                         $request->session()->put('username', $user[0]->username);
-
-                        //add username to cache for the auth check - lasts forever
                         Cache::forever('username', $user[0]->username);
-
-                        return redirect('/home');
+                        return redirect('/home')->with('user', $user[0]);
                     } else {
-                        $error = "Username and password are incorrect.";
-                        return redirect('/')->with('error', $error);
+                        return redirect('/')->with('error', $this->login_error);
                     }
                 } else {
-                    $error = "Username and password are incorrect.";
-                    return redirect('/')->with('error', $error);
+                    return redirect('/')->with('error', $this->login_error);
                 }
             } else {
-                $error = "Username and password are incorrect.";
-
-                //should these be redirects with values instead?
-                //How do I handle the error variable in the web.php file?
-                return redirect('/')->with('error', $error);
+                return redirect('/')->with('error', $this->login_error);
             }
         }
 

@@ -5817,7 +5817,12 @@ form#deleteForm {
 #top_nav ul li a {
   color: white; }
 
-#side_nav .panel {
+.panel {
   width: 100%; }
+
+p#loggedin_user {
+  color: white;
+  text-align: right;
+  margin: 0 11px 0 0; }
 
 /*# sourceMappingURL=app.css.map */
