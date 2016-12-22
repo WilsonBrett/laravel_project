@@ -38,11 +38,13 @@
         }
 
         public function get_user_by_username($u) {
-            return User::where('username', $u)->get();
+            $user = User::where('username', $u)->get();
+            return $user[0];
         }
 
         public function get_user_by_id($id) {
-            return User::where('id', $id)->get();
+            $user = User::where('id', $id)->get();
+            return $user[0];
         }
 
         //update

@@ -1,5 +1,8 @@
 @include('partials.head')
-        <h1>Edit User</h1><br />
+<h1>Edit User</h1>
+@include('partials.header')
+
+        <br />
         <form method="post" action="/users/{{ $user->id }}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             {{ method_field('PUT') }}

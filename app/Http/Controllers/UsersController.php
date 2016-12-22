@@ -32,7 +32,7 @@
             if($this->authorized($request)) {
                 //@TODO:  need to add try and catch for database queries
                 $user = $this->repository->get_user_by_id($id);
-                return view('users.show', ['user' => $user[0]]);
+                return view('users.show', ['user' => $user]);
             } else {
                 return redirect('/');
             }
@@ -41,7 +41,7 @@
         public function editUser(Request $request, $id) {
             if($this->authorized($request)) {
                 $user = $this->repository->get_user_by_id($id);
-                return view('users.edit', ['user' => $user[0]]);
+                return view('users.edit', ['user' => $user]);
             } else {
                 return redirect('/');
             }

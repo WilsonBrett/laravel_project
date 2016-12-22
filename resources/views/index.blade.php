@@ -1,7 +1,6 @@
 @include('partials.head')
-<header class="page-header">
-    <h1>Application X</h1>
-</header>
+<h1 class="page-header">Application X</h1>
+
 <form class="col-md-4 col-md-offset-4" method="post" action="/">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div class="form-group">

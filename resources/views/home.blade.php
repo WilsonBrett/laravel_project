@@ -1,19 +1,7 @@
 @include('partials.head')
-<header class="container">
-    <h1>Landing Page</h1>
-    <nav id="top_nav">
-        @if(session('user'))
-            <p id="loggedin_user">Logged In:&nbsp&nbsp&nbsp{{ session('user')->username }}</p>
-        @endif
-        <ul>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="/">Logout</a></li>
-        </ul>
-    </nav>
-</header><br />
+<h1>Landing Page</h1>
+@include('partials.header')
+
 <div class="container">
     <nav class="col-md-2" id="side_nav">
         <div class="panel panel-primary">

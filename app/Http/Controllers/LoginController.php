@@ -28,12 +28,11 @@
                 //@TODO:  Determine db response when no username found
                 //Currently $user is still truthy upon failed username query
                 $user = $this->repository->get_user_by_username($username);
-                //dd($user[0]);
-                if($user->count() > 0) {
-                    if(($user[0]->password) === $password) {
+                if($user) {
+                    if(($user->password) === $password) {
                         if(!$request->session()->has('user')) {
-                             $request->session()->put('user', $user[0]);
-                             Cache::forever('user', $user[0]);
+                             $request->session()->put('user', $user);
+                             Cache::forever('user', $user);
                         }
                         return redirect('/home');
                     } else {
