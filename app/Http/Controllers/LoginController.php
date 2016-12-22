@@ -28,11 +28,14 @@
                 //@TODO:  Determine db response when no username found
                 //Currently $user is still truthy upon failed username query
                 $user = $this->repository->get_user_by_username($username);
+                //dd($user[0]);
                 if($user->count() > 0) {
                     if(($user[0]->password) === $password) {
-                        $request->session()->put('username', $user[0]->username);
-                        Cache::forever('username', $user[0]->username);
-                        return redirect('/home')->with('user', $user[0]);
+                        if(!$request->session()->has('user')) {
+                             $request->session()->put('user', $user[0]);
+                             Cache::forever('user', $user[0]);
+                        }
+                        return redirect('/home');
                     } else {
                         return redirect('/')->with('error', $this->login_error);
                     }
@@ -45,12 +48,12 @@
         }
 
         public function logout(Request $request) {
-            if(Cache::has('username')) {
-                Cache::forget('username');
+            if(Cache::has('user')) {
+                Cache::forget('user');
             }
 
-            if($request->session()->has('username')) {
-                $request->session()->forget('username');
+            if($request->session()->has('user')) {
+                $request->session()->forget('user');
             }
 
             return view('index');
