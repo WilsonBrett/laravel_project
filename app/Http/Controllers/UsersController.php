@@ -10,15 +10,15 @@
 
     class UsersController extends Controller {
         public $repository;
-        private $auth_check;
+        private $auth;
 
-        public function __construct(UsersInterface $repository, My_Auth_Check $my_auth_check) {
+        public function __construct(UsersInterface $repository, My_Auth_Check $auth) {
             $this->repository = $repository;
-            $this->auth_check = $my_auth_check;
+            $this->auth = $auth;
         }
 
         public function getAll(Request $request) {
-            if($this->authorized($request)) {
+            if($this->auth->check_session($request)) {
                 $users = $this->repository->get_users();
                 return view('users.index', ['users' => $users]);
 
@@ -28,8 +28,7 @@
         }
 
         public function showUser(Request $request, $id) {
-            if($this->authorized($request)) {
-                //@TODO:  need to add try and catch for database queries
+            if($this->auth->check_session($request)) {
                 $user = $this->repository->get_user_by_id($id);
                 return view('users.show', ['user' => $user]);
             } else {
@@ -38,7 +37,7 @@
         }
 
         public function editUser(Request $request, $id) {
-            if($this->authorized($request)) {
+            if($this->auth->check_session($request)) {
                 $user = $this->repository->get_user_by_id($id);
                 return view('users.edit', ['user' => $user]);
             } else {
@@ -47,7 +46,7 @@
         }
 
         public function updateUser(Request $request, $id) {
-            if($this->authorized($request)) {
+            if($this->auth->check_session($request)) {
                 $this->repository->update_user($request, $id);
                 return redirect('/users');
             } else {
@@ -56,7 +55,7 @@
         }
 
         public function newUserForm(Request $request) {
-            if($this->authorized($request)) {
+            if($this->auth->check_session($request)) {
                 return view('users.new');
             } else {
                 return redirect('/');
@@ -64,7 +63,7 @@
         }
 
         public function addUser(Request $request) {
-            if($this->authorized($request)) {
+            if($this->auth->check_session($request)) {
                 $success = $this->repository->add_user($request);
 
                 if($success) {
@@ -80,17 +79,12 @@
         }
 
         public function deleteUser(Request $request, $id) {
-            if($this->authorized($request)) {
+            if($this->auth->check_session($request)) {
                 $this->repository->delete_user($id);
                 return redirect('/users');
             } else {
                 return redirect('/');
             }
-        }
-
-        //need to refactor
-        private function authorized($req) {
-            return $this->auth_check->check_session($req);
         }
     }
 

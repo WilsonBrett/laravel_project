@@ -12,21 +12,25 @@ use Illuminate\Http\RedirectResponse;
 class ClientsController extends Controller {
 
         public $repository;
-        private $auth_check;
+        private $auth;
 
-    public function __construct(ClientsInterface $repository, My_Auth_Check $my_auth_check) {
+    public function __construct(ClientsInterface $repository, My_Auth_Check $auth) {
         $this->repository = $repository;
-        $this->auth_check = $my_auth_check;
+        $this->auth = $auth;
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //return 'some clients';
-        return $this->repository->get_clients();
+    public function index(Request $request) {
+        if($this->auth->check_session($request)) {
+            $clients = $this->repository->get_clients();
+            return view('clients.index', ['clients' => $clients]);
+        } else {
+            return redirect('/');
+        }
+
     }
 
     /**
