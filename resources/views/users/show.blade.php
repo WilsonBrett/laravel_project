@@ -19,6 +19,11 @@
                     @else
                         <li class="list-group-item">Admin: False</li>
                     @endif
+                    @if ($user -> project_manager)
+                        <li class="list-group-item">Project Manager: True</li>
+                    @else
+                        <li class="list-group-item">Project Manager: False</li>
+                    @endif
                 </ul>
             </div>
         </div>

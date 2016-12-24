@@ -2,7 +2,7 @@
 
     namespace App\Repositories;
     use App\Interfaces\UsersInterface;
-    use App\User;
+    use App\Models\User;
     use Illuminate\Http\Request;
     use Illuminate\Http\RedirectResponse;
 
@@ -22,12 +22,14 @@
                 $lastname = $req->input('lname');
                 $password = $req->input('pword');
                 $admin = $req->input('admin');
+                $pm = $req->input('project_manager');
 
                 User::insert(['firstname' => $firstname,
                               'lastname' => $lastname,
                               'username' => $username,
                               'password' => $password,
-                              'admin' => $admin]);
+                              'admin' => $admin,
+                              'project_manager' => $pm]);
                 return true;
             }
         }
@@ -54,13 +56,15 @@
                 $new_username = $req->input('uname');
                 $password = $req->input('pword');
                 $admin = $req->input('admin');
+                $pm = $req->input('project_manager');
 
                 User::where('id', $id)
                         ->update(['firstname'=>$new_firstname,
                                   'lastname'=>$new_lastname,
                                   'username'=>$new_username,
                                   'password' => $password,
-                                  'admin' => $admin]);
+                                  'admin' => $admin,
+                                  'project_manager' => $pm]);
         }
 
         //delete

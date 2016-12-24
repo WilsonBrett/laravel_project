@@ -1,7 +1,6 @@
 <?php
     //backspaces used in the top 3 lines.  not sure why.
     namespace App\Http\Controllers;
-    use App\User;
     use App\Http\Controllers\Controller;
     use App\Classes\My_Auth_Check;
     use App\Interfaces\UsersInterface;

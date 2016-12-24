@@ -29,6 +29,10 @@
                     <label for="admin">Admin</label>
                     <input type="checkbox" name="admin" class="form-control" id="admin" value="1">
                 </div>
+                <div class="form-group">
+                    <label for="project_manager">Project Manager</label>
+                    <input type="checkbox" name="project_manager" class="form-control" id="project_manager" value="1">
+                </div>
             </div>
             <div class="panel-footer">
                 <div class="form-group">

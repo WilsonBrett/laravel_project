@@ -43,3 +43,10 @@ Route::put('/users/{id}', 'UsersController@updateUser');
 
 //delete route
 Route::delete('/users/{id}', 'UsersController@deleteUser');
+
+//****************************scaffolded resources**************************
+Route::resource('clients', 'ClientsController');
+Route::resource('departments', 'DepartmentsController');
+Route::resource('titles', 'TitlesController');
+Route::resource('employees', 'EmployeesController');
+

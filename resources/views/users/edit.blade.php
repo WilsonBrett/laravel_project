@@ -32,6 +32,14 @@
                             <input name="admin" type="checkbox" id="admin" class="form-control" value="1">
                         @endif
                     </div>
+                    <div class="form-group">
+                        <label for="project_manager">Project Manager</label>
+                        @if ($user->project_manager)
+                            <input name="project_manager" type="checkbox" id="project_manager" class="form-control" value="1" checked>
+                        @else
+                            <input name="project_manager" type="checkbox" id="project_manager" class="form-control" value="1">
+                        @endif
+                    </div>
                 </div>
                 <div class="panel-footer">
                     <input name="submit" type="submit" class="btn btn-primary" value="Submit">
