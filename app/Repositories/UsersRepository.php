@@ -13,7 +13,7 @@
             $username = $req->input('uname');
             $user = $this->get_user_by_username($username);
 
-            if($user->count()) {
+            if($user) {
                 //fail - user exists in db.
                 return false;
 
@@ -41,7 +41,7 @@
 
         public function get_user_by_username($u) {
             $user = User::where('username', $u)->get();
-            return $user[0];
+            return $result = $user->isEmpty() ? false : $user[0];
         }
 
         public function get_user_by_id($id) {

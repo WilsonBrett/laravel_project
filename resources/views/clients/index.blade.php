@@ -1,8 +1,7 @@
 @include('partials.head')
 <h1>Clients Index</h1>
-@include('partials.header')
-
-    <br />
+@include('partials.navigation')
+    <div class="col-xs-8 col-sm-9 col-md-10 col-lg-10">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <label class="panel-title">Active Clients</label>
@@ -23,5 +22,5 @@
                 <a href="/users/new" class="btn btn-primary">Add User</a>
             </div>
         </div>
-    <br />
+    </div>
 @include('partials.foot')
