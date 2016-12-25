@@ -7,7 +7,11 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "vendor/fortawesome/font-awesome/scss/font-awesome";
+
+//font-awesome
+@import "vendor/fortawesome/font-awesome/scss/font-awesome.scss";
+
+//my styles
 @import "reset";
 @import "users";
 @import "home";
