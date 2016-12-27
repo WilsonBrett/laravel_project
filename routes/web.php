@@ -15,6 +15,8 @@
 
 Route::get('/', 'LoginController@logout');
 
+Route::get('/login', 'LoginController@show_login');
+
 Route::post('/', 'LoginController@login');
 
 //loads the landing page

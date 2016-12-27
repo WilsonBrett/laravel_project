@@ -33,7 +33,7 @@
                              $request->session()->put('user', $user);
                              Cache::forever('user', $user);
                         }
-                        return redirect('/home');
+                        return redirect('/dashboard');
                     } else {
                         return redirect('/')->with('error', $this->login_error);
                     }
@@ -57,9 +57,13 @@
             return view('index');
         }
 
+        public function show_login() {
+            return view('login');
+        }
+
         public function show_home(Request $request) {
             if($this->auth_check->check_session($request)) {
-                return view('home');
+                return view('dashboard');
             } else {
                 return redirect('/');
             }

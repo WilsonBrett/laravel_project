@@ -8097,11 +8097,98 @@ button.close {
   margin: 0; }
 
 body {
-  font-size: 16px; }
+  font-size: 16px;
+  background-color: white; }
 
-h1 {
-  color: red;
-  text-align: center; }
+header {
+  background-color: white; }
+
+a {
+  color: inherit;
+  text-decoration: none; }
+
+nav#first_nav {
+  font-size: 12px; }
+
+nav#second_nav {
+  color: #464646;
+  font-weight: 700; }
+
+nav ul {
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
+  line-height: 48px;
+  text-align: right;
+  margin: 0; }
+
+nav ul li {
+  display: inline; }
+
+nav ul li + li {
+  margin-left: 12px; }
+
+div#logo {
+  display: inline; }
+
+div#logo i {
+  color: #464646; }
+
+div#logo h1 {
+  display: inline-block;
+  margin: 0;
+  line-height: 44px;
+  vertical-align: top;
+  color: #464646; }
+
+div#logo h1 span {
+  font-size: 8pt;
+  vertical-align: super;
+  margin-left: -8px; }
+
+section div.image {
+  margin: 0 auto;
+  width: 90%;
+  position: relative; }
+
+section div.image img {
+  width: 100%; }
+
+section div.image h1 {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  margin: 0;
+  color: white; }
+
+section div.image span {
+  position: absolute;
+  top: 450px;
+  left: 10px;
+  color: #464646; }
+
+#top_nav {
+  background-color: #969696;
+  padding: 2rem 0; }
+
+#top_nav ul {
+  text-align: center;
+  margin-bottom: 0; }
+
+#top_nav ul li {
+  display: inline;
+  padding: 1rem; }
+
+#top_nav ul li a {
+  color: white; }
+
+.panel {
+  width: 100%; }
+
+p#loggedin_user {
+  color: white;
+  text-align: right;
+  margin: 0 11px 0 0; }
 
 a, a:hover, a:visited, a:active {
   text-decoration: none; }
@@ -8126,29 +8213,6 @@ ul {
 
 form#deleteForm {
   display: inline; }
-
-#top_nav {
-  background-color: #969696;
-  padding: 2rem 0; }
-
-#top_nav ul {
-  text-align: center;
-  margin-bottom: 0; }
-
-#top_nav ul li {
-  display: inline;
-  padding: 1rem; }
-
-#top_nav ul li a {
-  color: white; }
-
-.panel {
-  width: 100%; }
-
-p#loggedin_user {
-  color: white;
-  text-align: right;
-  margin: 0 11px 0 0; }
 
 /*! jQuery UI - v1.12.1 - 2016-09-14
 * http://jqueryui.com
