@@ -1,5 +1,4 @@
 <?php
-    //backspaces used in the top 3 lines.  not sure why.
     namespace App\Http\Controllers;
     use App\Http\Controllers\Controller;
     use App\Classes\My_Auth_Check;
@@ -54,14 +53,10 @@
                 $request->session()->forget('user');
             }
 
-            return view('index');
+            return redirect('/');
         }
 
-        public function show_login() {
-            return view('login');
-        }
-
-        public function show_home(Request $request) {
+        public function show_dashboard(Request $request) {
             if($this->auth_check->check_session($request)) {
                 return view('dashboard');
             } else {

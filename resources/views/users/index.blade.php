@@ -1,5 +1,4 @@
 @include('partials.head')
-<h1>Users Index</h1>
 @include('partials.navigation')
         <div class="col-xs-8 col-sm-9 col-md-10 col-lg-10">
             <div class="panel panel-primary">

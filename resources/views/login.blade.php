@@ -1,5 +1,5 @@
 @include('partials.head')
-<h1 class="page-header">Hour Glass</h1>
+<h1 id="login_header" class="page-header">Login</h1>
 
 <form class="col-md-4 col-md-offset-4" method="post" action="/">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">

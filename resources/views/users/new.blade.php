@@ -1,5 +1,4 @@
 @include('partials.head')
-<h1>New User</h1>
 @include('partials.navigation')
     <div class="col-xs-8 col-sm-9 col-md-10 col-lg-10">
         <form method="post" action="/users/create">
@@ -38,7 +37,7 @@
                     <div class="form-group">
                         <input type="submit" name="submit" value="Submit" class="btn btn-primary">
                         <a href="/users" class="btn btn-default">Cancel</a>
-                        <a href="/" class="btn btn-default">Logout</a>
+                        <a href="/logout" class="btn btn-default">Logout</a>
                     <div>
                 </div>
             </div>

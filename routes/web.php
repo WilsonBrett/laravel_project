@@ -12,15 +12,20 @@
 */
 //
 //*****************************LOGINController*****************************
+Route::get('/', function() {
+    return view('index');
+});
 
-Route::get('/', 'LoginController@logout');
+Route::get('/logout', 'LoginController@logout');
 
-Route::get('/login', 'LoginController@show_login');
+Route::get('/login', function() {
+    return view('login');
+});
 
 Route::post('/', 'LoginController@login');
 
 //loads the landing page
-Route::get('/home', 'LoginController@show_home');
+Route::get('/dashboard', 'LoginController@show_dashboard');
 
 //*****************************USERSController*****************************
 
