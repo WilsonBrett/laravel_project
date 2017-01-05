@@ -58,7 +58,7 @@
 
         public function show_dashboard(Request $request) {
             if($this->auth_check->check_session($request)) {
-                return view('dashboard');
+                return view('dashboard.dashboard_home');
             } else {
                 return redirect('/');
             }

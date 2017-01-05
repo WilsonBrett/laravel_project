@@ -1,5 +1,6 @@
-@include('partials.head')
-@include('partials.navigation')
+@extends('dashboard.dashboard_layout')
+
+@section('dashboard_content')
     <div class="col-xs-8 col-sm-9 col-md-10 col-lg-10">
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -22,4 +23,4 @@
             </div>
         </div>
     </div>
-@include('partials.foot')
+@stop

@@ -24,7 +24,7 @@ Route::get('/login', function() {
 
 Route::post('/', 'LoginController@login');
 
-//loads the landing page
+//loads the dashboard home
 Route::get('/dashboard', 'LoginController@show_dashboard');
 
 //*****************************USERSController*****************************
