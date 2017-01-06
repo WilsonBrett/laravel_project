@@ -10,7 +10,8 @@
         "components/jquery": "^3.1",
         "twbs/bootstrap": "^3.3",
         "components/jqueryui": "^1.12",
-        "fortawesome/font-awesome": "^4.7"
+        "fortawesome/font-awesome": "^4.7",
+        "doctrine/dbal": "^2.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
