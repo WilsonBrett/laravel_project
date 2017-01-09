@@ -11,19 +11,21 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        DB::statement('CREATE TABLE users_test (
-                        id int(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-                        firstname VARCHAR(30) NOT NULL,
-                        lastname VARCHAR(30) NOT NULL,
-                        username VARCHAR(50) NOT NULL,
-                        password VARCHAR(40) NOT NULL,
-                        admin TINYINT(1),
-                        project_manager TINYINT(1),
-                        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                        updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-                    )');
+    public function up() {
+
+        if(!Schema::hasTable('users')) {
+            DB::statement('CREATE TABLE users (
+                            id int(6) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                            firstname VARCHAR(30) NOT NULL,
+                            lastname VARCHAR(30) NOT NULL,
+                            username VARCHAR(50) NOT NULL UNIQUE,
+                            password VARCHAR(40) NOT NULL,
+                            admin TINYINT(1),
+                            project_manager TINYINT(1),
+                            created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                            updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                        )');
+        }
     }
 
     /**
@@ -33,6 +35,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_test');
+        Schema::dropIfExists('users');
     }
 }
