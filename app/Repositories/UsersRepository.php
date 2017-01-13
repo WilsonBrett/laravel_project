@@ -10,6 +10,7 @@
 
         //create
         public function add_user($req) {
+
             $username = $req->input('uname');
             $user = $this->get_user_by_username($username);
 

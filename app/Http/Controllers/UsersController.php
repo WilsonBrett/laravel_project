@@ -7,6 +7,7 @@
     use Illuminate\Support\Facades\Cache;
     use Illuminate\Http\Request;
     use Illuminate\Http\RedirectResponse;
+    use App\Http\Requests\NewUserRequest;
 
     class UsersController extends Controller {
         public $repository;
@@ -62,7 +63,8 @@
             }
         }
 
-        public function addUser(Request $request) {
+        //public function addUser(Request $request) {
+        public function addUser(NewUserRequest $request) {
             if($this->auth->check_session($request)) {
                 $success = $this->repository->add_user($request);
 
