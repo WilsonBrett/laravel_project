@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <input name="submit" type="submit" class="btn btn-primary" value="Submit">
+                    <input name="submit" type="submit" class="btn btn-primary" value="Update User">
                     <a href="/users/{{$user->id}}" class="btn btn-default">Cancel</a>
                 </div>
             </div>
