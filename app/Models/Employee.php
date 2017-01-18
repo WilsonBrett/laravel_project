@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Employee extends Model
-{
-    //public $timestamps = false;
+class Employee extends Model {
+    public $timestamps = false;
+
+    protected $fillable = ['firstname', 'lastname', 'hire_date', 'termination_date'];
 }
