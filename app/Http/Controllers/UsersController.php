@@ -18,7 +18,7 @@
             $this->auth = $auth;
         }
 
-        public function getAll(Request $request) {
+        public function index(Request $request) {
             if($this->auth->check_session($request)) {
                 $users = $this->repository->get_users();
                 return view('users.index', ['users' => $users]);
@@ -28,7 +28,7 @@
             }
         }
 
-        public function showUser(Request $request, $id) {
+        public function show(Request $request, $id) {
             if($this->auth->check_session($request)) {
                 $user = $this->repository->get_user_by_id($id);
                 return view('users.show', ['user' => $user]);
@@ -37,7 +37,7 @@
             }
         }
 
-        public function editUser(Request $request, $id) {
+        public function edit(Request $request, $id) {
             if($this->auth->check_session($request)) {
                 $user = $this->repository->get_user_by_id($id);
                 return view('users.edit', ['user' => $user]);
@@ -46,7 +46,7 @@
             }
         }
 
-        public function updateUser(Request $request, $id) {
+        public function update(Request $request, $id) {
             if($this->auth->check_session($request)) {
                 $this->repository->update_user($request, $id);
                 return redirect('/users');
@@ -55,23 +55,22 @@
             }
         }
 
-        public function newUserForm(Request $request) {
+        public function create(Request $request) {
             if($this->auth->check_session($request)) {
-                return view('users.new');
+                return view('users.create');
             } else {
                 return redirect('/');
             }
         }
 
-        //public function addUser(Request $request) {
-        public function addUser(NewUserRequest $request) {
+        public function store(NewUserRequest $request) {
             if($this->auth->check_session($request)) {
                 $success = $this->repository->add_user($request);
 
                 if($success) {
                     return redirect('/users');
                 } else {
-                    return redirect('/users/new')
+                    return redirect('/users/create')
                                 ->with('error', 'Error:  Username is in use.  Please try another.');
                 }
 
@@ -80,7 +79,7 @@
             }
         }
 
-        public function deleteUser(Request $request, $id) {
+        public function delete(Request $request, $id) {
             if($this->auth->check_session($request)) {
                 $this->repository->delete_user($id);
                 return redirect('/users');

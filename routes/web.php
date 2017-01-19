@@ -30,26 +30,26 @@ Route::get('/dashboard', 'LoginController@show_dashboard');
 //*****************************USERSController*****************************
 
 //index route
-Route::get('/users', 'UsersController@getAll');
+Route::get('/users', 'UsersController@index');
 
 //new route
-Route::get('/users/new', 'UsersController@newUserForm');
+Route::get('/users/create', 'UsersController@create');
 
 //create route
-Route::post('/users/create', 'UsersController@addUser');
+Route::post('/users', 'UsersController@store');
 
 //show route - this route grabs users/new so it needs to be below
 //the more specificaly written routes.
-Route::get('/users/{id}', 'UsersController@showUser');
+Route::get('/users/{id}', 'UsersController@show');
 
 //edit route
-Route::get('/users/{id}/edit', 'UsersController@editUser');
+Route::get('/users/{id}/edit', 'UsersController@edit');
 
 //update route (put/patch)
-Route::put('/users/{id}', 'UsersController@updateUser');
+Route::put('/users/{id}', 'UsersController@update');
 
 //delete route
-Route::delete('/users/{id}', 'UsersController@deleteUser');
+Route::delete('/users/{id}', 'UsersController@delete');
 
 //****************************scaffolded resources**************************
 Route::resource('clients', 'ClientsController');

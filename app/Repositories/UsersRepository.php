@@ -11,7 +11,7 @@
         //create
         public function add_user($req) {
 
-            $username = $req->input('uname');
+            $username = $req->input('username');
             $user = $this->get_user_by_username($username);
 
             if($user) {
@@ -19,18 +19,7 @@
                 return false;
 
             } else {
-                $firstname = $req->input('fname');
-                $lastname = $req->input('lname');
-                $password = $req->input('pword');
-                $admin = $req->input('admin');
-                $pm = $req->input('project_manager');
-
-                User::insert(['firstname' => $firstname,
-                              'lastname' => $lastname,
-                              'username' => $username,
-                              'password' => $password,
-                              'admin' => $admin,
-                              'project_manager' => $pm]);
+                User::create($req->all());
                 return true;
             }
         }
@@ -52,20 +41,8 @@
 
         //update
         public function update_user($req, $id) {
-                $new_firstname = $req->input('fname');
-                $new_lastname = $req->input('lname');
-                $new_username = $req->input('uname');
-                $password = $req->input('pword');
-                $admin = $req->input('admin');
-                $pm = $req->input('project_manager');
-
-                User::where('id', $id)
-                        ->update(['firstname'=>$new_firstname,
-                                  'lastname'=>$new_lastname,
-                                  'username'=>$new_username,
-                                  'password' => $password,
-                                  'admin' => $admin,
-                                  'project_manager' => $pm]);
+            $usr = User::findOrFail($id);
+            $usr->update($req->all());
         }
 
         //delete

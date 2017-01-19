@@ -2,28 +2,28 @@
 
 @section('dashboard_content')
     <div class="col-xs-8 col-sm-9 col-md-10 col-lg-10">
-        <form method="post" action="/users/create">
+        <form method="post" action="/users">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="panel panel-primary">
                 <div class="panel-body">
                     <div class="form-group">
                         <label for="first_name">First Name</label>
-                        <input type="text" name="fname" class="form-control" id="first_name" placeholder="First Name">
+                        <input type="text" name="firstname" class="form-control" id="first_name" placeholder="First Name">
                     </div>
                     <div class="form-group">
                         <label for="last_name">Last Name</label>
-                        <input type="text" name="lname" class="form-control" id="last_name" placeholder="Last Name">
+                        <input type="text" name="lastname" class="form-control" id="last_name" placeholder="Last Name">
                     </div>
                     <div class="form-group">
                         <label for="user_name">Username</label>
-                        <input type="text" name="uname" class="form-control" id="user_name" placeholder="Username">
+                        <input type="text" name="username" class="form-control" id="user_name" placeholder="Username">
                         @if(session('error'))
                             <div class="alert alert-danger">{{ session('error') }}</div>
                         @endif
                     </div>
                      <div class="form-group">
-                        <label for="admin">Password</label>
-                        <input type="password" name="pword" class="form-control" id="password" placeholder="Password">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Password">
                     </div>
                     <div class="form-group">
                         <label for="admin">Admin</label>

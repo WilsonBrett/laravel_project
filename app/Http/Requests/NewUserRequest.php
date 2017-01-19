@@ -24,10 +24,10 @@ class NewUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'fname' => 'required',
-            'lname' => 'required',
-            'uname' => 'required|min:4',
-            'pword' => 'required|min:4'
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'username' => 'required|min:4',
+            'password' => 'required|min:4'
         ];
     }
 }

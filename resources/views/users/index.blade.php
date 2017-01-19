@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="panel-footer">
-                <a href="/users/new" class="btn btn-primary">Add User</a>
+                <a href="/users/create" class="btn btn-primary">Add User</a>
             </div>
         </div>
     </div>

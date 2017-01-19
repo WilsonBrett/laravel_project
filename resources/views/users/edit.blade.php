@@ -9,19 +9,19 @@
                 <div class="panel-body">
                     <div class="form-group">
                         <label for="first_name">First Name</label>
-                        <input name="fname" type="text" id="first_name" class="form-control" value="{{ $user->firstname}}">
+                        <input name="firstname" type="text" id="first_name" class="form-control" value="{{ $user->firstname}}">
                     </div>
                     <div class="form-group">
                         <label for="last_name">Last Name</label>
-                        <input name="lname" type="text" id="last_name" class="form-control" value="{{ $user->lastname }}">
+                        <input name="lastname" type="text" id="last_name" class="form-control" value="{{ $user->lastname }}">
                     </div>
                     <div class="form-group">
                         <label for="user_name">Username</label>
-                        <input name="uname" type="text" id="user_name" class="form-control" value="{{ $user->username }}">
+                        <input name="username" type="text" id="user_name" class="form-control" value="{{ $user->username }}">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input name="pword" type="text" id="password" class="form-control" value="{{ $user->password }}">
+                        <input name="password" type="text" id="password" class="form-control" value="{{ $user->password }}">
                     </div>
                     <div class="form-group">
                         <label for="admin">Admin</label>
