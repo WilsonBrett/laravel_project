@@ -2,7 +2,7 @@
 
 @section('content')
     <h1 id="login_header" class="page-header">Login</h1>
-    <form class="col-md-4 col-md-offset-4" method="post" action="/">
+    <form class="col-md-4 col-md-offset-4" method="post" action="/login">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="form-group">
             <label for="login_uname">Username</label>

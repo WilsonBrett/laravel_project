@@ -3,34 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Classes\My_Auth_Check;
 use App\Interfaces\ClientsInterface;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 
 class ClientsController extends Controller {
+    public $repository;
 
-        public $repository;
-        private $auth;
-
-    public function __construct(ClientsInterface $repository, My_Auth_Check $auth) {
+    public function __construct(ClientsInterface $repository) {
+        $this->middleware('auth_main');
         $this->repository = $repository;
-        $this->auth = $auth;
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request) {
-        if($this->auth->check_session($request)) {
-            $clients = $this->repository->get_clients();
-            return view('clients.index', ['clients' => $clients]);
-        } else {
-            return redirect('/');
-        }
-
+    public function index() {
+        $clients = $this->repository->get_clients();
+        return view('clients.index', ['clients' => $clients]);
     }
 
     /**

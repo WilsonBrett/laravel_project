@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="panel-footer">
-                <a href="/users/new" class="btn btn-primary">Add User</a>
+                <a href="/users/new" class="btn btn-primary">Add Client</a>
             </div>
         </div>
     </div>

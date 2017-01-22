@@ -10,45 +10,30 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-//
-//*****************************LOGINController*****************************
+
+//Homepage
 Route::get('/', function() {
     return view('index');
 });
 
+//*****************************LOGINController*****************************
+//If person logged in - take them to dashboard.
+Route::get('/login', 'LoginController@login_form')->middleware('auth_login');
+Route::post('/login', 'LoginController@login')->middleware('auth_login');
+
+//If not logged in take them to '/'
+Route::get('/dashboard', 'LoginController@show_dashboard')->middleware('auth_main');
+
+//no need for middleware.
 Route::get('/logout', 'LoginController@logout');
 
-Route::get('/login', function() {
-    return view('login');
-});
-
-Route::post('/', 'LoginController@login');
-
-//loads the dashboard home
-Route::get('/dashboard', 'LoginController@show_dashboard');
-
 //*****************************USERSController*****************************
-
-//index route
 Route::get('/users', 'UsersController@index');
-
-//new route
 Route::get('/users/create', 'UsersController@create');
-
-//create route
 Route::post('/users', 'UsersController@store');
-
-//show route - this route grabs users/new so it needs to be below
-//the more specificaly written routes.
 Route::get('/users/{id}', 'UsersController@show');
-
-//edit route
 Route::get('/users/{id}/edit', 'UsersController@edit');
-
-//update route (put/patch)
 Route::put('/users/{id}', 'UsersController@update');
-
-//delete route
 Route::delete('/users/{id}', 'UsersController@delete');
 
 //****************************scaffolded resources**************************

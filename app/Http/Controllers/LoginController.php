@@ -1,7 +1,6 @@
 <?php
     namespace App\Http\Controllers;
     use App\Http\Controllers\Controller;
-    use App\Classes\My_Auth_Check;
     use App\Interfaces\UsersInterface;
     use Illuminate\Http\Request;
     use Illuminate\Http\RedirectResponse;
@@ -9,12 +8,14 @@
 
     class LoginController extends Controller {
         private $repository;
-        private $auth_check;
         private $login_error = "Username and password are incorrect.";
 
-        public function __construct(UsersInterface $repository, My_Auth_Check $auth_check) {
+        public function __construct(UsersInterface $repository) {
             $this->repository = $repository;
-            $this->auth_check = $auth_check;
+        }
+
+        public function login_form() {
+            return view('login');
         }
 
         public function login(Request $request) {
@@ -30,7 +31,7 @@
                     if(($user->password) === $password) {
                         if(!$request->session()->has('user')) {
                              $request->session()->put('user', $user);
-                             Cache::forever('user', $user);
+                             //Cache::forever('user', $user);
                         }
                         return redirect('/dashboard');
                     } else {
@@ -45,23 +46,20 @@
         }
 
         public function logout(Request $request) {
-            if(Cache::has('user')) {
-                Cache::forget('user');
-            }
-
             if($request->session()->has('user')) {
                 $request->session()->forget('user');
             }
 
+            // if(Cache::has('user')) {
+            //     Cache::forget('user');
+            // }
+
             return redirect('/');
         }
 
-        public function show_dashboard(Request $request) {
-            if($this->auth_check->check_session($request)) {
-                return view('dashboard.dashboard_home');
-            } else {
-                return redirect('/');
-            }
+        //if not logged in redirect to home page - implement auth_main
+        public function show_dashboard() {
+            return view('dashboard.dashboard_home');
         }
     }
 
