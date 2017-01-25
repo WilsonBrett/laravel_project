@@ -20,7 +20,7 @@
 
                 @if(session('user')->project_manager)
                     <label>Project Management</label>
-                    <li><a href="/#">Forecasts</a></li>
+                    <li><a href="/forecasts/create">Forecasts</a></li>
                     <li><a href="/#">My Projects</a></li>
                     <li><a href="/#">My Contracts</a></li>
                     <hr />

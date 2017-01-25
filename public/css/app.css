@@ -8217,6 +8217,26 @@ ul {
 form#deleteForm {
   display: inline; }
 
+form#forecast_form label {
+  text-align: center; }
+
+form#forecast_form div.row + div.row {
+  border-top: 1px solid #969696;
+  border-left: 1px solid #969696; }
+
+form#forecast_form div.row:last-of-type {
+  border-bottom: 1px solid #969696; }
+
+form#forecast_form input.cell {
+  border-top: none;
+  border-bottom: none;
+  border-left: none;
+  border-right: 1px solid #969696;
+  text-align: center;
+  font-family: helvetica, sans-serif;
+  padding: 2px 0;
+  font-size: 14px; }
+
 /*! jQuery UI - v1.12.1 - 2016-09-14
 * http://jqueryui.com
 * Includes: core.css, accordion.css, autocomplete.css, menu.css, button.css, controlgroup.css, checkboxradio.css, datepicker.css, dialog.css, draggable.css, resizable.css, progressbar.css, selectable.css, selectmenu.css, slider.css, sortable.css, spinner.css, tabs.css, tooltip.css, theme.css

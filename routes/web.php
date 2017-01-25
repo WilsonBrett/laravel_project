@@ -41,4 +41,5 @@ Route::resource('clients', 'ClientsController');
 Route::resource('departments', 'DepartmentsController');
 Route::resource('titles', 'TitlesController');
 Route::resource('employees', 'EmployeesController');
+Route::resource('forecasts', 'ForecastsController');
 
